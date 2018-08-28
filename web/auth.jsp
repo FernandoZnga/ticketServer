@@ -13,14 +13,21 @@
 <%
     if (request.getParameter("userName") != null) {
         try {
+            out.println("1");
             Dba db = new Dba("142.93.245.77:49161:XE");
+            out.println("2");
             db.conectar();
+            out.println("3");
             db.query.execute(
                     "SELECT uuid, username, password"
                     + " FROM usernames");
+            out.println("4");
             ResultSet rs1 = db.query.getResultSet();
+            out.println("5");
             String centinela = "n";
+            out.println("6");
             while (rs1.next()) {
+                out.println("6");
                 if (request.getParameter("userName").trim().toUpperCase().equals(rs1.getString(2).toUpperCase())
                         && request.getParameter("userPassword").equals(rs1.getString(3))) {
                     centinela = "s";
