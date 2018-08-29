@@ -8,27 +8,8 @@
 <%@page import="database.Dba"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 
-<%
-    //seguridad de la pagina
-    if (session.getAttribute("s_token") == null) {
-        request.getRequestDispatcher("index.jsp?exist=3").forward(request, response);
-    } else if (session.getAttribute("s_token") != null) {
-        Dba db = new Dba("142.93.245.77:49161:XE");
-        db.conectar();
-        db.query.execute("SELECT valid "
-                + "FROM usertoken "
-                + "WHERE token ='" + session.getAttribute("s_token") + "' "
-                + "AND valid = 1");
-        ResultSet rs = db.query.getResultSet();
-        while (rs.next()) {
-            if (rs.getString(1).equals("1")) {
-                break;
-            } else {
-                request.getRequestDispatcher("index.jsp?exist=3").forward(request, response);
-            }
-        }
-    }
-%>
+<%@include file="security.jsp"%>
+<%--<%@include file="header.jsp"%>--%>
 <!DOCTYPE html>
 <html>
     <head>
@@ -40,39 +21,7 @@
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     </head>
     <body>
-        <nav class="navbar navbar-inverse">
-            <div class="container-fluid">
-                <div class="navbar-header">
-                    <a class="navbar-brand">Administracion</a>
-                </div>
-                <ul class="nav navbar-nav">
-                    <li class="active"><a href="main.jsp">Home</a></li>
-                    <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Propietarios <span class="caret"></span></a>
-                        <ul class="dropdown-menu">
-                            <li><a href="main.jsp?propietarios=1">Ver Lista de Propietarios</a></li>
-                            <li><a href="propietariosForm.jsp?agregarProp=1">Agregar un Proietario</a></li>
-                        </ul>
-                    </li>
-                    <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Mentenimiento <span class="caret"></span></a>
-                        <ul class="dropdown-menu">
-                            <li><a href="main.jsp?reporte=2">Ver Lista de Mantenimientos</a></li>
-                            <li><a href="#">Agregar Mantenimiento</a></li>
-                        </ul>
-                    </li>
-                    <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Reportes <span class="caret"></span></a>
-                        <ul class="dropdown-menu">
-                            <li><a href="main.jsp?reporte=3">Ver Reportes</a></li>
-                            <li><a href="#">Agregar Reporte</a></li>
-                        </ul>
-                    </li>
-                    <li><a href="#">Page 2</a></li>
-                </ul>
-                <ul class="nav navbar-nav navbar-right">
-                    <li><a href="#"><span class="glyphicon glyphicon-user"></span> Mi cuenta</a></li>
-                    <li><a href="index.jsp?exist=101"><span class="glyphicon glyphicon-log-in"></span> Salir</a></li>
-                </ul>
-            </div>
-        </nav>
+        <jsp:include page="<%= "/header.jsp?tipo="+session.getAttribute("s_role") %>"  />
         <%
             if ((request.getParameter("exist") != null)) {
 

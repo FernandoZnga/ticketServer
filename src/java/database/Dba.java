@@ -3,6 +3,7 @@ package database;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.Statement;
+import static java.time.Clock.system;
 
 public class Dba {
     private String base_datos;
@@ -26,6 +27,7 @@ public class Dba {
            query = dbcon.createStatement();
        } catch (Exception e) {
             e.printStackTrace();
+            System.out.println(e.getMessage());
         }
     }
    

@@ -19,8 +19,8 @@
             db.conectar();
             out.println("3");
             db.query.execute(
-                    "SELECT uuid, username, password"
-                    + " FROM usernames");
+                    "SELECT uuid, username, password, usertype "
+                    + "FROM usernames");
             out.println("4");
             ResultSet rs1 = db.query.getResultSet();
             out.println("5");
@@ -31,6 +31,7 @@
                 if (request.getParameter("userName").trim().toUpperCase().equals(rs1.getString(2).toUpperCase())
                         && request.getParameter("userPassword").equals(rs1.getString(3))) {
                     centinela = "s";
+                    session.setAttribute("s_role",rs1.getString(4));
                     break;
                 }
             }
