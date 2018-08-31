@@ -30,7 +30,6 @@
         %>
         <div class="container">
             <div class="row">
-
                 <div class="col-md-8 col-md-offset-2">
                     <form role="form" method="POST" action="ticketsForm.jsp?ticid=<%=request.getParameter("ticketid")%>">
                         <legend class="text-center">Editar Ticket</legend>
@@ -115,8 +114,6 @@
                             </div>
                             <div class="form-group col-md-12">
                                 <label for="comment">Historial de Comentarios</label>
-                                <button class="btn btn-primary" onclick="agregarComentario()">Agrega</button>
-                                <p id="comment" name="newComment"></p>
                                 <%
                                     try {
                                         Dba db = new Dba("142.93.245.77:49161:XE");
@@ -153,6 +150,10 @@
                             </div>
                         </div>
                     </form>
+                    <div class="container-fluid">
+                        <br><br>
+                        <button class="btn btn-success" onclick="agregarComentario()">Agregar Comentario</button>
+                    </div>
                 </div>
             </div>
         </div>
@@ -166,7 +167,7 @@
                     <form role="form" method="POST" action="ticketsForm.jsp?agregarTicket=1">
                         <legend class="text-center">Agregar Ticket</legend>
                         <fieldset>
-                            <legend>Agregar Ticket</legend>
+                            <legend>Datos del Ticket</legend>
                             <div class="form-group col-md-4">
                                 <label for="area">Area</label>
                                 <select name="ddArea" class="form-control" required onchange="this.form.submit()">
@@ -374,11 +375,7 @@
 //                            document.getElementById("btAgregar").disabled = false;
 //                        }
             function    agregarComentario() {
-//                var comentario = prompt("Ingrese su comentario", "");
-                window.open("newComment.jsp","pageName","height=400,width=400");
-//                if (comentario !== null) {
-//                    document.getElementById("comment").innerHTML = comentario;
-//                }
+                window.open("newComment.jsp?ticket=<%=request.getParameter("ticketid")%>", "pageName", "height=600,width=600");
             }
         </script>
     </body>
