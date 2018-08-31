@@ -31,8 +31,7 @@
                                     + "lastname, tipo, telefono, email, username "
                                     + "FROM propietarios "
                                     + "ORDER BY edificio asc, "
-                                    + "apartamento asc, tipo desc, lastname, "
-                                    + "firstname");
+                                    + "apartamento asc, tipo desc");
                             ResultSet rs = db.query.getResultSet();
                             while (rs.next()) {
                     %>

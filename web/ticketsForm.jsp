@@ -55,19 +55,19 @@
                                     if (request.getParameter("status").equals("ABIERTO")) {
                                 %>
                                 <input type="radio" id="tipoAbierto" name="tipo" value="ABIERTO" checked /> Abierto
-                                <input type="radio" id="tipoCerrado"  name="tipo" value="CERRADO" /> Cerrado
-                                <input type="radio" id="tipoCerrado"  name="tipo" value="RETENIDO" /> Retenido
+                                <input type="radio" id="tipoCerrado"  name="tipo" value="CERRADO" onchange="enableBt()"/> Cerrado
+                                <input type="radio" id="tipoCerrado"  name="tipo" value="RETENIDO" onchange="enableBt()"/> Retenido
                                 <%
                                 } else if (request.getParameter("status").equals("CERRADO")) {
                                 %>
-                                <input type="radio" id="tipoAbierto" name="tipo" value="ABIERTO" /> Abierto
+                                <input type="radio" id="tipoAbierto" name="tipo" value="ABIERTO" onchange="enableBt()"/> Abierto
                                 <input type="radio" id="tipoCerrado"  name="tipo" value="CERRADO" checked /> Cerrado
-                                <input type="radio" id="tipoCerrado"  name="tipo" value="RETENIDO" /> Retenido
+                                <input type="radio" id="tipoCerrado"  name="tipo" value="RETENIDO" onchange="enableBt()"/> Retenido
                                 <%
                                 } else {
                                 %>
-                                <input type="radio" id="tipoAbierto" name="tipo" value="ABIERTO" /> Abierto
-                                <input type="radio" id="tipoCerrado"  name="tipo" value="CERRADO" /> Cerrado
+                                <input type="radio" id="tipoAbierto" name="tipo" value="ABIERTO" onchange="enableBt()"/> Abierto
+                                <input type="radio" id="tipoCerrado"  name="tipo" value="CERRADO" onchange="enableBt()"/> Cerrado
                                 <input type="radio" id="tipoCerrado"  name="tipo" value="RETENIDO" checked /> Retenido
                                 <%
                                     }
@@ -76,7 +76,7 @@
 
                             <div class="form-group col-md-12">
                                 <label for="email">Asignado a:</label>
-                                <select name="asignadoA" class="form-control" id="asignadoA" required>
+                                <select name="asignadoA" class="form-control" id="asignadoA" required onchange="enableBt()">
                                     <option id="default" name="default" value="default" disabled>Escoja una opcion</option>
                                     <%
                                         try {
@@ -142,7 +142,7 @@
 
                         <div class="form-group">
                             <div class="col-md-10">
-                                <input type="submit" value="Actualizar" name="btActualizar" id="btActualizar" class="btn btn-primary"/>
+                                <input type="submit" value="Actualizar" name="btActualizar" disabled id="btActualizar" class="btn btn-primary"/>
                                 <a href="main.jsp?tickets=1"> Cancelar</a>
                             </div>
                             <div class="col-md-2">
@@ -203,7 +203,7 @@
                             </div>
                             <div class="form-group col-md-8">
                                 <label for="tipo reporte">Tipo Reporte</label>
-                                <select name="ddReporte" class="form-control" required >
+                                <select name="ddReporte" class="form-control" required onchange="enableBtAgregar()">
                                     <option id="default" name="" value="" selected disabled>Escoja una opcion</option>
                                     <%
                                         if (request.getParameter("ddArea") != null) {
@@ -239,7 +239,7 @@
                             </div>
                             <div class="form-group col-md-12">
                                 <label for="email">Asignado a:</label>
-                                <select name="asignadoB" class="form-control" id="asignadoA" required>
+                                <select name="asignadoB" class="form-control" id="asignadoA" required onchange="enableBtAgregar()">
                                     <option id="default" name="default" value="" selected disabled>Escoja una opcion</option>
                                     <%
                                         try {
@@ -360,20 +360,18 @@
         %>
 
         <script>
-//                    function enableBt() {
-//                        document.getElementById("btActualizar").disabled = false;
-//                    }
-//                    function enableBtAgregar() {
-//                        if (true
-//                                document.getElementById("ddArea").value.equals("") ||
-//                                document.getElementById("ddReporte").value.equals("") ||
-//                                document.getElementById("asignadoB").value.equals("") ||
-//                                document.getElementById("comment").value.equals("")
-//                                ) {
-//                            document.getElementById("btAgregar").disabled = false;
-//                        } else {
-//                            document.getElementById("btAgregar").disabled = false;
-//                        }
+            function enableBt() {
+                document.getElementById("btActualizar").disabled = false;
+            }
+            function enableBtAgregar() {
+                if (document.getElementById("ddReporte").value.equals("") ||
+                        document.getElementById("asignadoB").value.equals("")
+                        ) {
+                    document.getElementById("btAgregar").disabled = true;
+                } else {
+                    document.getElementById("btAgregar").disabled = false;
+                }
+            }
             function    agregarComentario() {
                 window.open("newComment.jsp?ticket=<%=request.getParameter("ticketid")%>", "pageName", "height=600,width=600");
             }

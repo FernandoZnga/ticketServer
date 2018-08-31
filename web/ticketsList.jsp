@@ -27,7 +27,7 @@
                 try {
                     Dba db = new Dba("142.93.245.77:49161:XE");
                     db.conectar();
-                    String qry = "select a.uuid ticketid, a.typeid, a.employeeid, "
+                    String qry = "SELECT a.uuid ticketid, a.typeid, a.employeeid, "
                             + "a.statusid, a.createdAt, a.updatedBy, b.status, "
                             + "c.area, c.ttype, c.notes, d.username empusername, "
                             + "d.firstname || ' ' || d.lastname empname, e.username, "
@@ -36,7 +36,7 @@
                             + "LEFT JOIN ticketstatus b ON a.statusid = b.uuid "
                             + "LEFT JOIN tickettype c ON a.typeid = c.uuid "
                             + "LEFT JOIN users d ON a.employeeid = d.uuid "
-                            + "LEFT JOIN users e ON a.updatedBy = e.uuid";
+                            + "LEFT JOIN users e ON a.updatedBy = e.uuid ORDER BY 16 desc";
                     db.query.execute(qry);
                     ResultSet rs = db.query.getResultSet();
                     while (rs.next()) {

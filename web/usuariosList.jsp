@@ -28,7 +28,8 @@
                             + "a.email, a.firstname, a.lastname, "
                             + "b.uuid usernameid, b.USERTYPE "
                             + "FROM  users a, usernames b "
-                            + "WHERE a.username = b.username");
+                            + "WHERE a.username = b.username "
+                            + "ORDER BY a.username");
                     ResultSet rs = db.query.getResultSet();
                     while (rs.next()) {
             %>
