@@ -20,42 +20,9 @@
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     </head>
     <body>
-        <nav class="navbar navbar-inverse">
-            <div class="container-fluid">
-                <div class="navbar-header">
-                    <a class="navbar-brand">Administracion</a>
-                </div>
-                <ul class="nav navbar-nav">
-                    <li class=""><a href="main.jsp">Home</a></li>
-                    <li class="dropdown active"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Propietarios <span class="caret"></span></a>
-                        <ul class="dropdown-menu">
-                            <li><a href="main.jsp?propietarios=1">Ver Lista de Propietarios</a></li>
-                            <li><a href="propietariosForm.jsp?agregarProp=1">Agregar un Proietario</a></li>
-                        </ul>
-                    </li>
-                    <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Mentenimiento <span class="caret"></span></a>
-                        <ul class="dropdown-menu">
-                            <li><a href="main.jsp?reporte=2">Ver Lista de Mantenimientos</a></li>
-                            <li><a href="#">Agregar Mantenimiento</a></li>
-                        </ul>
-                    </li>
-                    <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Reportes <span class="caret"></span></a>
-                        <ul class="dropdown-menu">
-                            <li><a href="main.jsp?reporte=3">Ver Reportes</a></li>
-                            <li><a href="#">Agregar Reporte</a></li>
-                        </ul>
-                    </li>
-                    <li><a href="#">Page 2</a></li>
-                </ul>
-                <ul class="nav navbar-nav navbar-right">
-                    <li><a href="#"><span class="glyphicon glyphicon-user"></span> Mi cuenta</a></li>
-                    <li><a href="index.jsp?exist=101"><span class="glyphicon glyphicon-log-in"></span> Salir</a></li>
-                </ul>
-            </div>
-        </nav>
-
+        <jsp:include page="<%= "/header.jsp?tipo=" + session.getAttribute("s_role")%>"  />
         <div class="container">
-            <h3>Bienvenido</h3>
+            <h2>Bienvenido</h2>
             <p>Modulo para la administración de un complejo de apartamentos.</p>
         </div>
         <%
@@ -126,9 +93,12 @@
                         </fieldset>
 
                         <div class="form-group">
-                            <div class="col-md-12">
+                            <div class="col-md-10">
                                 <input type="submit" value="Actualizar" name="btActualizar" disabled id="btActualizar" class="btn btn-primary"/>
                                 <a href="main.jsp?propietarios=1"> Cancelar</a>
+                            </div>
+                            <div class="col-md-2">
+                                <input type="submit" value="Eliminar " name="btEliminar" id="btEliminar" class="btn btn-danger"/>
                             </div>
                         </div>
                     </form>
@@ -162,15 +132,23 @@
                     request.getRequestDispatcher("main.jsp?propietarios=a&exist=200").forward(request, response);
                 }
             }
-        %>
-        <script>
-            function enableBt() {
-                document.getElementById("btActualizar").disabled = false;
+            if (request.getParameter("btEliminar") != null) {
+                try {
+                    Dba db = new Dba("142.93.245.77:49161:XE");
+                    db.conectar();
+                    String qry = "CALL pr_delete_propietario('"
+                            + request.getParameter("uuid") + "')";
+                    out.print(qry);
+                    db.query.execute(qry);
+                    db.desconectar();
+                    request.getRequestDispatcher("main.jsp?propietarios=1").forward(request, response);
+                } catch (Exception e) {
+                    e.printStackTrace();
+                    out.print(e);
+                    request.getRequestDispatcher("main.jsp?propietarios=1&exist=200").forward(request, response);
+                }
             }
-        </script>
 
-
-        <%
             if (request.getParameter("agregarProp") != null) {
         %>
         <div class="container">
@@ -269,6 +247,9 @@
                         document.getElementById("email").value.equals("")) {
                     document.getElementById("btActualizar").disabled = true;
                 } else {
+                    document.getElementById("btActualizar").disabled = false;
+                }
+                function enableBt() {
                     document.getElementById("btActualizar").disabled = false;
                 }
         </script>

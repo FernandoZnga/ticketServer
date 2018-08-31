@@ -13,31 +13,25 @@
 <%
     if (request.getParameter("tipo").equals("ADMIN")) {
 %>
-            <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Usuarios <span class="caret"></span></a>
+            <li class="dropdown"><a class="dropdown-toggle active" data-toggle="dropdown" href="#">Usuarios<span class="caret"></span></a>
                 <ul class="dropdown-menu">
-                    <li><a href="main.jsp?reporte=3">Ver Usuarios</a></li>
-                    <li><a href="#">Agregar Usuario</a></li>
+                    <li><a href="main.jsp?usuarios=1">Listar Usuarios</a></li>
+                    <li><a href="usuariosForm.jsp?agregarUser=1">Agregar Usuario</a></li>
                 </ul>
             </li>
-            <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Empleados <span class="caret"></span></a>
+            <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Propietarios<span class="caret"></span></a>
                 <ul class="dropdown-menu">
-                    <li><a href="main.jsp?reporte=3">Ver Empleados</a></li>
-                    <li><a href="#">Agregar Empleado</a></li>
+                    <li><a href="main.jsp?propietarios=1">Listar Propietarios</a></li>
+                    <li><a href="propietariosForm.jsp?agregarProp=1">Agregar Proietario</a></li>
                 </ul>
             </li>
 <%
         }
 %>
-            <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Propietarios <span class="caret"></span></a>
+            <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Tickets<span class="caret"></span></a>
                 <ul class="dropdown-menu">
-                    <li><a href="main.jsp?propietarios=1">Ver Lista de Propietarios</a></li>
-                    <li><a href="propietariosForm.jsp?agregarProp=1">Agregar un Proietario</a></li>
-                </ul>
-            </li>
-            <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Mentenimiento <span class="caret"></span></a>
-                <ul class="dropdown-menu">
-                    <li><a href="main.jsp?reporte=2">Ver Lista de Mantenimientos</a></li>
-                    <li><a href="#">Agregar Mantenimiento</a></li>
+                    <li><a href="main.jsp?tickets=1">Listar Tickets</a></li>
+                    <li><a href="ticketsForm.jsp?areaType=1&agregarTicket=1">Agregar Ticket</a></li>
                 </ul>
             </li>
             <li><a href="#">Page 2</a></li>
