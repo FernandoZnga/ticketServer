@@ -32,7 +32,7 @@
                             <div class="col-md-10">
                                 <input onclick="addComment();" type="submit" value="Agregar" name="btAgregarComment" id="btAgregarComment" class="btn btn-primary"/>
                                 <a href="javascript:cerrar();"> Cancelar</a>
-                                <input type="text" name="ticket" value="<%=request.getParameter("ticket")%>">
+                                <input type="text" name="ticket" value="<%=request.getParameter("ticket")%>" hidden=>
                             </div>
                         </div>
                     </form>
