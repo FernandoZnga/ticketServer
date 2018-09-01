@@ -37,7 +37,7 @@
             <li><a href="#">Page 2</a></li>
         </ul>
         <ul class="nav navbar-nav navbar-right">
-            <li><a href="#"><span class="glyphicon glyphicon-user"></span> Mi cuenta</a></li>
+            <li><a href="main.jsp?editarMicuenta=1"><span class="glyphicon glyphicon-user"></span> Mi cuenta <%=session.getAttribute("s_username")%></a></li>
             <li><a href="index.jsp?exist=101"><span class="glyphicon glyphicon-log-in"></span> Salir</a></li>
         </ul>
     </div>

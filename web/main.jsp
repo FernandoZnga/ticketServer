@@ -35,6 +35,16 @@
         </div>
         <%
             }
+            if (request.getParameter("exist").equals("2")) {
+        %>
+        <div class="alert alert-success alert-dismissible show" role="alert">
+            <strong>Solicitud Exitosa</strong> Usuario actualizado satisfactoriamente.
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        <%
+                }
         }
         %>
         <div class="container">
@@ -44,5 +54,6 @@
         <jsp:include page="/propietariosList.jsp" />
         <jsp:include page="/usuariosList.jsp" />
         <jsp:include page="/ticketsList.jsp" />
+        <jsp:include page="/miCuenta.jsp" />
     </body>
 </html>
