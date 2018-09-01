@@ -20,7 +20,8 @@
                     + request.getParameter("password1") + "','"
                     + request.getParameter("email") + "','"
                     + request.getParameter("firstName") + "','"
-                    + request.getParameter("lastName") + "')");
+                    + request.getParameter("lastName") + "','"
+                    + "USUARIO')");
 
             db.desconectar();
             request.getRequestDispatcher("index.jsp?exist=2").forward(request, response);

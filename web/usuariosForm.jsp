@@ -133,7 +133,7 @@
             <div class="row">
 
                 <div class="col-md-8 col-md-offset-2">
-                    <form role="form" method="POST" action="propietariosForm.jsp">
+                    <form role="form" method="POST" action="usuariosForm.jsp">
                         <legend class="text-center">Agregar Usuario</legend>
                         <fieldset>
                             <legend>Datos del Usuario</legend>
@@ -184,11 +184,12 @@
                     Dba db = new Dba("142.93.245.77:49161:XE");
                     db.conectar();
                     String qry = "CALL pr_insert_newuser('"
-                            + request.getParameter("username") + "','"
+                            + request.getParameter("username").toUpperCase().trim() + "','"
                             + request.getParameter("password") + "','"
                             + request.getParameter("email") + "','"
                             + request.getParameter("firstName") + "','"
-                            + request.getParameter("lastName") + "')";
+                            + request.getParameter("lastName") + "','"
+                            + request.getParameter("tipo") + "')";
                     out.print(qry);
                     db.query.execute(qry);
                     db.desconectar();
