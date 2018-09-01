@@ -31,10 +31,15 @@
             <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Tickets<span class="caret"></span></a>
                 <ul class="dropdown-menu">
                     <li><a href="main.jsp?tickets=1">Listar Tickets</a></li>
-                    <li><a href="ticketsForm.jsp?areaType=1&agregarTicket=1">Agregar Ticket</a></li>
+                    <li><a href="ticketsForm.jsp?agregarTicket=1">Agregar Ticket</a></li>
                 </ul>
             </li>
-            <li><a href="#">Page 2</a></li>
+            <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Mantenimientos<span class="caret"></span></a>
+                <ul class="dropdown-menu">
+                    <li><a href="main.jsp?mantenimientos=1">Listar Mantenimientos</a></li>
+                    <li><a href="manteForm.jsp?agregarMantenimiento=1">Agregar Mantenimiento</a></li>
+                </ul>
+            </li>
         </ul>
         <ul class="nav navbar-nav navbar-right">
             <li><a href="main.jsp?editarMicuenta=1"><span class="glyphicon glyphicon-user"></span> Mi cuenta <%=session.getAttribute("s_username")%></a></li>

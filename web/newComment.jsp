@@ -33,7 +33,6 @@
                                 <input onclick="addComment();" type="submit" value="Agregar" name="btAgregarComment" id="btAgregarComment" class="btn btn-primary"/>
                                 <a href="javascript:cerrar();"> Cancelar</a>
                                 <input type="text" name="ticket" value="<%=request.getParameter("ticket")%>">
-                                <input type="text" id="newComm" name="newComment" value="">
                             </div>
                         </div>
                     </form>
@@ -66,11 +65,10 @@
             window.close();
         </script>
         <%
-//                        request.getRequestDispatcher("ticketsForm.jsp?editarTicket=1").forward(request, response);
                 } catch (Exception e) {
                     e.printStackTrace();
                     out.print(e);
-                    request.getRequestDispatcher("main.jsp?tickets=1&exist=200").forward(request, response);
+                    request.getRequestDispatcher("main.jsp?exist=200").forward(request, response);
                 }
             }
         %>

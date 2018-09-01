@@ -55,5 +55,6 @@
         <jsp:include page="/usuariosList.jsp" />
         <jsp:include page="/ticketsList.jsp" />
         <jsp:include page="/miCuenta.jsp" />
+        <jsp:include page="/manteList.jsp" />
     </body>
 </html>
