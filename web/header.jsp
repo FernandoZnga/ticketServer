@@ -32,12 +32,26 @@
                 <ul class="dropdown-menu">
                     <li><a href="main.jsp?tickets=1">Listar Tickets</a></li>
                     <li><a href="ticketsForm.jsp?agregarTicket=1">Agregar Ticket</a></li>
+<%
+    if (request.getParameter("tipo").equals("ADMIN")) {
+%>
+                    <li><a href="main.jsp?tickets=1&cerrado=1">Listar Tickets Cerrados</a></li>
+<%
+        }
+%>
                 </ul>
             </li>
             <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Mantenimientos<span class="caret"></span></a>
                 <ul class="dropdown-menu">
                     <li><a href="main.jsp?mantenimientos=1">Listar Mantenimientos</a></li>
                     <li><a href="manteForm.jsp?agregarMantenimiento=1">Agregar Mantenimiento</a></li>
+<%
+    if (request.getParameter("tipo").equals("ADMIN")) {
+%>
+                    <li><a href="main.jsp?mantenimientos=1&cerrado=1">Listar Mantenimientos Cerrados</a></li>
+<%
+        }
+%>
                 </ul>
             </li>
         </ul>
