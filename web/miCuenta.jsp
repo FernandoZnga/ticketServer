@@ -40,6 +40,10 @@
             while (rs.next()) {
 %>
 <div class="container">
+    <h2>Mi Cuenta</h2>
+    <p><strong>Sección del Usuario.</strong></p>
+</div>
+<div class="container">
     <div class="row">
         <div class="col-md-8 col-md-offset-2">
             <form name="formMiCuenta" action="main.jsp?exist=2" method="POST">

@@ -9,6 +9,10 @@
 <%            if (request.getParameter("mantenimientos") != null) {
 %>
 <div class="container">
+    <h2>Mantenimiento</h2>
+    <p><strong>Administración de Mantenimientos.</strong></p>
+</div>
+<div class="container">
     <table class="table table-hover">
         <thead>
             <tr>
@@ -19,7 +23,7 @@
                 <th>Asignado a</th>
                 <th>Nombre Emp.</th>
                 <th>Fecha apertura</th>
-                <th>Ultima Actualizacion</th>
+                <th>Ultima Actualización</th>
             </tr>
         </thead>
         <tbody>

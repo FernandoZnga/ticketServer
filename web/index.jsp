@@ -67,9 +67,10 @@
                 }
             }
         %>
+        <br><br><br><br>
         <div class="container">
             <div class="row">
-                <div class="col-md-offset-5 col-md-3">
+                <div class="col-md-offset-2 col-md-3">
                     <div class="form-login">
                         <h4>Bienvenido</h4>
                         <form name="loginForm" action="auth.jsp" method="POST">

@@ -9,6 +9,10 @@
 <%            if (request.getParameter("tickets") != null) {
 %>
 <div class="container">
+    <h2>Tickets</h2>
+    <p><strong>Administración de Tickets.</strong></p>
+</div>
+<div class="container">
     <table class="table table-hover">
         <thead>
             <tr>

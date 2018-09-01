@@ -47,10 +47,10 @@
                 }
         }
         %>
-        <div class="container">
+<!--        <div class="container">
             <h2>Bienvenido</h2>
             <p><strong>Modulo para la administración de un complejo de apartamentos.</strong></p>
-        </div>
+        </div>-->
         <jsp:include page="/propietariosList.jsp" />
         <jsp:include page="/usuariosList.jsp" />
         <jsp:include page="/ticketsList.jsp" />

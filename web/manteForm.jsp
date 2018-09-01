@@ -22,8 +22,8 @@
     <body>
         <jsp:include page="<%= "/header.jsp?tipo=" + session.getAttribute("s_role")%>"  />
         <div class="container">
-            <h2>Bienvenido</h2>
-            <p>Modulo para la administración de un complejo de apartamentos.</p>
+            <h2>Mantenimiento</h2>
+            <p><strong>Administración de Mantenimientos.</strong></p>
         </div>
         <%
             if (request.getParameter("editarMante") != null) {

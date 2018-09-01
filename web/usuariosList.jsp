@@ -9,6 +9,10 @@
 <%            if (request.getParameter("usuarios") != null) {
 %>
 <div class="container">
+    <h2>Usuarios</h2>
+    <p><strong>Mantenimiento de Usuarios.</strong></p>
+</div>
+<div class="container">
     <table class="table table-hover">
         <thead>
             <tr>
